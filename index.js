@@ -4,12 +4,13 @@ const cors = require('cors');
 
 const app = express();
 const PORT = 8080;
+const urlDb ="mongodb+srv://kevinnavarto:5ROMdjsNFevl0QPU@cluster0.d3ypbsb.mongodb.net/?retryWrites=true&w=majority"
 
 // Habilitar CORS para todas las rutas
 app.use(cors());
 
 // Conexión a la base de datos
-mongoose.connect('mongodb+srv://kevin:wa5wZ98pHYgOFx7X@cluster0.cuhsavp.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect(urlDb, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
