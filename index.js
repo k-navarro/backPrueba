@@ -9,9 +9,7 @@ app.use(cors());
 dbConection();
 app.use(express.json());
 
-//const Usuario = mongoose.model('Usuario', usuarioSchema);
-
-app.use("/usuarios", require("./src/routes/route"));
+app.use("/", require("./src/routes/route"));
 
 
 app.listen(PORT, () => {

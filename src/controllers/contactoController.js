@@ -1,7 +1,7 @@
 const Usuario = require('../models/contacto')
 
 
-export const obtenerContacto = async (req,res) =>{
+ const obtenerContacto = async (req,res) =>{
     try {
         const usuarios = await Usuario.find();
         res.json(usuarios);
@@ -10,7 +10,7 @@ export const obtenerContacto = async (req,res) =>{
       }
 };
 
-export const obtenerContactoPorId = async(req,res) =>{
+ const obtenerContactoPorId = async(req,res) =>{
     try {
         const usuario = await Usuario.findById(req.params.id);
         if (usuario) {
@@ -23,7 +23,7 @@ export const obtenerContactoPorId = async(req,res) =>{
       }
 };
 
-export const agregarContacto = async(req,res) =>{
+const agregarContacto = async(req,res) =>{
     try {
         console.log(req.body)
         const usuario = new Usuario(req.body);
@@ -35,7 +35,7 @@ export const agregarContacto = async(req,res) =>{
 
 };
 
-export const editarContacto = async(req,res) =>{
+ const editarContacto = async(req,res) =>{
     try {
         const usuario = await Usuario.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (usuario) {
@@ -48,7 +48,7 @@ export const editarContacto = async(req,res) =>{
       }
 };
 
-export const eliminarContacto = async(req,res) =>{
+const eliminarContacto = async(req,res) =>{
     try {
         const usuario = await Usuario.findByIdAndDelete(req.params.id);
         if (usuario) {
@@ -60,3 +60,5 @@ export const eliminarContacto = async(req,res) =>{
         res.status(500).json({ error: error.message });
       }
 };
+
+module.exports = {obtenerContacto,obtenerContactoPorId,agregarContacto,editarContacto, eliminarContacto}
